@@ -95,3 +95,17 @@ async function updateUser(req, res, next) {
     next(e);
   }
 }
+
+async function fetchUserInfo(req, res, next) {
+  try {
+    let userInfo = await User.findOne({
+      email: res.locals.decodedJwt.email,
+    }).select("-password -__v -friends -_id");
+
+    res.json({ message: "Success", payload: userInfo });
+  } catch (e) {
+    next(e);
+  }
+}
+
+module.exports = { signup, login, updateUser, fetchUserInfo };
