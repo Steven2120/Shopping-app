@@ -13,4 +13,4 @@ function checkIsEmptyFunc(req, res, next) {
   next();
 }
 
-module.export = checkIsEmptyFunc;
+module.exports = checkIsEmptyFunc;
